@@ -26,9 +26,9 @@ endTime = startTime + 3
 message = ""
 
 # Continuous audio stream:
+print 'starting audio stream'
 while True:
     data = stream.read(CHUNK)
-    message = message + data
     sock.send(data)
 print 'writing message'
 
