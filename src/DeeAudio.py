@@ -3,7 +3,7 @@ import wave
 import struct
 import math
 import numpy
-
+# Requires installing numpy and pyaudio libraries through pip install
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
 CHANNELS = 2
