@@ -29,7 +29,7 @@ while data != '':
     outStream.write(data)
     data = conn.recv(1024)
     a = a+1
-    print a
+    print "Packy: ", a
     
 
 
@@ -44,4 +44,3 @@ print "all done"
 ##    else:
 ##        print "No data"
 
-print "hi"
