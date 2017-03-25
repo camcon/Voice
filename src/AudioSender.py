@@ -9,7 +9,7 @@ import StreamFactory
 import time
 
 port = 8080
-host = '10.120.36.193'
+host = 'localhost'
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 try:
     sock.connect((host, port))
@@ -22,7 +22,7 @@ outStream = StreamFactory.makeOutputStream()
 CHUNK = 1024
 
 startTime = time.time()
-endTime = startTime + 5
+endTime = startTime + 3
 message = ""
 while startTime < endTime:
     data = stream.read(CHUNK)
@@ -34,8 +34,17 @@ while startTime < endTime:
 
 print 'writing message'
 #outStream.write(message)
-sock.send(message)    
-
+try:
+    while message:
+        sent = sock.send(message)
+        if not sent:
+            break
+        message = message[sent:]
+    outStream.write(sent)
+except Exception as ex:
+    print ex
+#sock.send(message)    
+print "sent"
 #sock.close()
 
     

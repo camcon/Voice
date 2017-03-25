@@ -1,4 +1,3 @@
-import DeeAudio as da
 import socket, subprocess, select, sys, pyaudio, StreamFactory
 # This is the client
 
@@ -20,24 +19,22 @@ print "Client running on ",sock.getsockname()
 
 # Main:
 outStream = StreamFactory.makeOutputStream()
-while True:
-    conn, addr = sock.accept()
-    print 'New connection from ', addr
-    conn.send('plop')
-    data = conn.recv(999999)
-#    buffer = ''
-##    while len(buffer) < 5120:
-##        chunk = conn.recv(5120-len(buffer))
-##        if not chunk:
-##            print "done recieving"
-##            break
-##        print chunk
-##        buffer += chunk
+#while True:
+conn, addr = sock.accept()
+print 'New connection from ', addr
+data = conn.recv(1024)
+
+a = 1
+while data != '':
+    outStream.write(data)
+    data = conn.recv(1024)
+    a = a+1
+    print a
     
-    print data
-    
-    outStream.write(data,1024)
-    print "yum"
+
+
+
+print "all done"
    # data = conn.recv(1024)
 ##    
 ##    if(data != None):
