@@ -31,7 +31,8 @@ def startListening(event):
     print "all done"
     
 def connect(event):
-    host = 'localhost'
+    #host = '10.120.36.193'
+    host = ipText.GetValue()
     port = 8080
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
