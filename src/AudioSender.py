@@ -57,5 +57,5 @@ def connect(host):
         #sock.send(message)    
         print "sent"
         #sock.close()
-
+connect('localhost')
         
